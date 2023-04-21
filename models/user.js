@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     minlength: [2, 'Минимальная длина 2 символа'],
     maxlength: [30, 'Максимальная длина 30 символов'],
-    default: 'Александр',
     required: true,
   },
   email: {
@@ -21,7 +20,6 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: [8, 'Минимальная длина пароля 8 символов'],
     select: false,
   },
 });

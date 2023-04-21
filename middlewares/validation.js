@@ -13,9 +13,9 @@ const validationUrl = (url) => {
 //  Регистрация
 module.exports.validationCreateUser = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
+    name: Joi.string().required().min(2).max(30),
     email: Joi.string().required().email(),
-    password: Joi.string().required().min(8).message('Пароль должен быть минимим 8 символов'),
+    password: Joi.string().required(),
   }),
 });
 
@@ -42,7 +42,7 @@ module.exports.validationCreatMovie = celebrate({
     director: Joi.string().required(),
     duration: Joi.number().required(),
     year: Joi.string().required(),
-    desctioption: Joi.string().required(),
+    description: Joi.string().required(),
     image: Joi.string().required().custom(validationUrl),
     trailerLink: Joi.string().required().custom(validationUrl),
     thumbnail: Joi.string().required().custom(validationUrl),

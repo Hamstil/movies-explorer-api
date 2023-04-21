@@ -8,7 +8,7 @@ const { errors } = require('celebrate');
 const { routes } = require('./routes');
 const setErrors = require('./middlewares/setErrors');
 const { requestLogger, errorLogger } = require('./middlewares/Logger');
-const { limiter } = require('./utils/constants');
+const { limiter, DB_ADRESS_DEV } = require('./utils/constants');
 
 const app = express();
 
@@ -26,7 +26,7 @@ app.use(errors());
 app.use(setErrors);
 
 async function main() {
-  await mongoose.connect(NODE_ENV === 'production' ? DB_ADRESS : 'mongodb://127.0.0.1:27017/bitfilmsdb', {
+  await mongoose.connect(NODE_ENV === 'production' ? DB_ADRESS : DB_ADRESS_DEV, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

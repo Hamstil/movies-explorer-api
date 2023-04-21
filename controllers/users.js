@@ -36,7 +36,7 @@ exports.updateUser = async (req, res, next) => {
       const { message } = err;
       next(new BadRequest(`Не валидные данные ${message}`));
     } else if (err.code === 11000) {
-      next(new ConflictError('Изменить уже существующий email нельзя'));
+      next(new ConflictError('Нельзя использовать email, уже имеющийся в базе'));
     } else {
       next(err);
     }

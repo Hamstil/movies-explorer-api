@@ -10,8 +10,11 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 
+const DB_ADRESS_DEV = 'mongodb://127.0.0.1:27017/bitfilmsdb';
+
 module.exports = {
   regexUrl,
   regexId,
   limiter,
+  DB_ADRESS_DEV,
 };
