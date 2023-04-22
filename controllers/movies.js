@@ -4,10 +4,10 @@ const BadRequest = require('../errors/BadRequest'); // 400
 const NotFound = require('../errors/NotFound'); // 404
 const CurrentError = require('../errors/CurrentError');
 
-// Возвращаем все фильмы
+// Возвращаем все фильмы добавленные пользователем
 exports.getMovies = async (req, res, next) => {
   try {
-    const movie = await movieSchema.find({});
+    const movie = await movieSchema.find({ owner: req.user._id });
     if (movie) {
       res.send(movie);
     }
